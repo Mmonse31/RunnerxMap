@@ -22,9 +22,11 @@
             <ion-label position="stacked">Password</ion-label>
             <ion-input ngModel [(ngModel)]="password" name="password" type="password" placeholder="Password"></ion-input>
           </ion-item>
-          <ion-button expand="full" (click)="signin()">
-            <span class="button__text">Log In</span>
-            <em class="button__icon fas fa-chevron-right"></em>
+          <ion-button expand="full" class="ion-margin" (click)="signin()">
+            <span>Log In</span>
+          </ion-button>	
+          <ion-button expand="full" class="ion-margin" [routerLink]="['/signup']">
+            <span>Sign up</span>
           </ion-button>	
         </form>
       </ion-col>

@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>signup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #formulario>
+    <ion-item lines="full">
+      <ion-label position="floating">First name</ion-label>
+      <ion-input type="text" required ngModel [(ngModel)]="firstName" name="nombre"></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Last name</ion-label>
+      <ion-input ngModel [(ngModel)]="lastName" type="text" name="lastName" required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Weight</ion-label>
+      <ion-input ngModel [(ngModel)]="weight" type="text" name="weight" required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Height</ion-label>
+      <ion-input ngModel [(ngModel)]="height" type="text" name="height" required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input ngModel [(ngModel)]="email" type="text" name="email" required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input ngModel [(ngModel)]="password" type="password" name="password" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Gender</ion-label>
+      <ion-select ngModel [(ngModel)]="gender" placeholder="Select One" name="gender">
+        <ion-select-option value="female">Female</ion-select-option>
+        <ion-select-option value="male">Male</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <ion-row>
+        <ion-col>
+          <ion-button expand="full" class="ion-margin" (click)="saveUser()" type="submit" color="danger">Sign Up</ion-button>
+        </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
