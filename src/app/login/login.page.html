@@ -8,16 +8,20 @@
     </ion-card-header>
   
     <ion-card-content>
-      
-        <ion-label position="stacked">Email</ion-label>
-        <ion-input ngModel [(ngModel)]="email" type="text" name="email" placeholder="Email "></ion-input>
-      
-   
-        <ion-label position="stacked">Password</ion-label>
-        <ion-input ngModel [(ngModel)]="password" name="password" type="password" placeholder="Password"></ion-input>
-      
-        <ion-button expand="block" style="margin-top:30;" >Log in</ion-button>
-        <ion-label style="margin-top:30px; font-size: 12px; "> If you don't hava a account please <u>Register</u> </ion-label> 
+      <ion-item lines="full">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input ngModel [(ngModel)]="email" type="text" name="email" required></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input ngModel [(ngModel)]="password" type="password" name="password" required></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" (click)="saveUser()" type="submit" color="danger">Login</ion-button>
+        </ion-col>
+    </ion-row>
+        <ion-label style="margin-top:30px; font-size: 12px; "> If you don't have a account please <u>Register</u> </ion-label> 
     </ion-card-content>
   
   </ion-card>

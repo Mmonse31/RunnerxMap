@@ -1,11 +1,13 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>signup</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <form #formulario>
+<ion-card style="margin-top:30px">
+  <ion-img src="../../assets/images/signup.png"></ion-img>
+  <ion-card-header>
+  
+    <ion-card-title>Sign Up</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    
     <ion-item lines="full">
       <ion-label position="floating">First name</ion-label>
       <ion-input type="text" required ngModel [(ngModel)]="firstName" name="nombre"></ion-input>
@@ -43,5 +45,9 @@
           <ion-button expand="full" class="ion-margin" (click)="saveUser()" type="submit" color="danger">Sign Up</ion-button>
         </ion-col>
     </ion-row>
-  </form>
+      <ion-label style="margin-top:30px; font-size: 12px; "> If you have a account please <u>Login</u> </ion-label> 
+  </ion-card-content>
+
+</ion-card>
+  
 </ion-content>
