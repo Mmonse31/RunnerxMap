@@ -1,35 +1,25 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Login</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-        <form>
-          <ion-item>
-            <ion-label position="stacked">Email</ion-label>
-            <ion-input ngModel [(ngModel)]="email" type="text" name="email" placeholder="Email "></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="stacked">Password</ion-label>
-            <ion-input ngModel [(ngModel)]="password" name="password" type="password" placeholder="Password"></ion-input>
-          </ion-item>
-          <ion-button expand="full" class="ion-margin" (click)="signin()">
-            <span>Log In</span>
-          </ion-button>	
-          <ion-button expand="full" class="ion-margin" [routerLink]="['/signup']">
-            <span>Sign up</span>
-          </ion-button>	
-        </form>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  
+  <ion-card style="margin-top:30px">
+    <ion-img src="../../assets/images/login.png"></ion-img>
+    <ion-card-header>
+    
+      <ion-card-title>Login</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input ngModel [(ngModel)]="email" type="text" name="email" placeholder="Email "></ion-input>
+      
+   
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input ngModel [(ngModel)]="password" name="password" type="password" placeholder="Password"></ion-input>
+      
+        <ion-button expand="block" style="margin-top:30;" >Log in</ion-button>
+        <ion-label style="margin-top:30px; font-size: 12px; "> If you don't hava a account please <u>Register</u> </ion-label> 
+    </ion-card-content>
+  
+  </ion-card>
+  
 </ion-content>
