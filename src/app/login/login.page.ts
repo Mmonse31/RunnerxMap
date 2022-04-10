@@ -38,8 +38,7 @@ export class LoginPage implements OnInit {
       if (res.isAuth) {
         await this.presentToast('Sesion iniciada', 'success');
         localStorage.setItem('@userData', JSON.stringify(res.data));
-        console.log('login...')
-        // this.router.navigate(['/home']);
+        this.router.navigate(['/main']);
       }
     },
     async err => {
