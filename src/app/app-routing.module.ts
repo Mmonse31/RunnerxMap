@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'find-places',
     loadChildren: () => import('./find-places/find-places.module').then( m => m.FindPlacesPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
 ];
 
 @NgModule({
