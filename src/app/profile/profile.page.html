@@ -1,12 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <ion-title text-center>profile</ion-title>
+    <ion-icon [routerLink]="['/main']" name="arrow-back-circle"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
       <ion-card>
         <ion-card-header>
           <ion-img col-6 style="cursor: pointer;" class="profile" src="{{userProfile.image}}"></ion-img>
@@ -26,6 +25,4 @@
           </ion-list>
         </ion-card-content>
       </ion-card>
-    </ion-row>
-  </ion-grid>
 </ion-content>
