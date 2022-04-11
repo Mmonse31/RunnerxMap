@@ -7,7 +7,7 @@
 <ion-content>
   <div>
     <div>
-      <div style="display: block">
+      <ion-card style="display: block">
         <canvas baseChart
           [data]="barChartData"
           [options]="barChartOptions"
@@ -16,8 +16,8 @@
           (chartHover)="chartHovered($event)"
           (chartClick)="chartClicked($event)">
         </canvas>
-      </div>
-      <ion-button expand="full" class="ion-margin" color="danger" (click)="randomize()">Update</ion-button>
+      </ion-card>
+      <ion-button expand="block" class="ion-margin" color="danger" (click)="randomize()">Update</ion-button>
     </div>
   </div>
 </ion-content>

@@ -60,7 +60,6 @@ export class StatisticsPage implements OnInit {
   }
 
   public randomize(): void {
-    console.log("click boton");
     // Only Change 3 values
     this.barChartData.datasets[0].data = [
       Math.round(Math.random() * 100),
