@@ -28,7 +28,7 @@ export class FindPlacesPage implements OnInit {
     // create a new map by passing HTMLElement
     const mapEle: HTMLElement = document.getElementById('map');
     // create LatLng object
-    const myLatLng = {lat: 4.658383846282959, lng: -74.09394073486328};
+    const myLatLng = {lat: 32.514946, lng: -117.038246};
     // create map
     this.map = new google.maps.Map(mapEle, {
       center: myLatLng,
@@ -39,8 +39,8 @@ export class FindPlacesPage implements OnInit {
       mapEle.classList.add('show-map');
       const marker = {
         position: {
-          lat: 4.658383846282959,
-          lng: -74.09394073486328
+          lat: 32.514946,
+          lng: -117.038246
         },
         title: 'punto uno'
       };
