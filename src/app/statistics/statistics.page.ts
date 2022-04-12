@@ -45,7 +45,7 @@ export class StatisticsPage implements OnInit {
   public barChartData: ChartData<'bar'> = {
     labels: [ 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom' ],
     datasets: [
-      { data: [ 65, 59, 80, 81, 56, 55, 40 ], label: 'Calorias' },
+      { data: [ 65, 59, 80, 81, 56, 55, 40 ], label: 'speed' },
       { data: [ 28, 48, 40, 19, 86, 27, 90 ], label: 'Distancia' }
     ]
   };
@@ -72,3 +72,4 @@ export class StatisticsPage implements OnInit {
       this.chart?.update();
   };
 }
+

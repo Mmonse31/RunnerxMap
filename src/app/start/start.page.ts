@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 declare var google;
 
@@ -10,6 +13,9 @@ interface Marker {
   title: string;
 }
 
+
+
+
 @Component({
   selector: 'app-start',
   templateUrl: './start.page.html',
@@ -19,14 +25,66 @@ export class StartPage implements OnInit {
   map: any;
 directionsService = new google.maps.DirectionsService();
 directionsDisplay = new google.maps.DirectionsRenderer();
+
+
+
 // parque simon bolivar
-origin = { lat: 4.658383846282959, lng: -74.09394073486328 };
+origin = { lat: 32.461292, lng: -116.824788 };
 // Parque la 93
-destination = { lat: 4.676802158355713, lng: -74.04825592041016 };
-  constructor() { }
+destination = { lat: 32.457999, lng: -116.827285 };
+  constructor(private http: HttpClient, private router: Router, public toastController: ToastController) { }
 
   ngOnInit() {
-    this.loadMap();
+    //this.loadMap();
+  }
+
+  async presentToast(msg, type) {
+    const toast = await this.toastController.create({
+      position: 'top',
+      color: type,
+      message: msg,
+      duration: 2000
+    });
+    toast.present();
+  }
+  
+  rutasRandom(): object[]{
+    const iniCoord = [/*{lat: 32.461656, lng: -116.824728}, {lat: 32.502796, lng: -116.977128}, */{lat: 32.461292, lng: -116.824788},{ lat: 32.461292, lng: -116.824788 }]
+    const finCoord = [/*{lat: 32.461656, lng: -116.824728}, {lat: 32.502796, lng: -116.977128}, */{lat: 32.467573, lng:-116.819367},{ lat: 32.457999, lng: -116.827285 }] //,
+    const random = Math.floor(Math.random() * (iniCoord.length));//Math.random() * iniCoord.length
+    return [iniCoord[random], finCoord[random]]
+  }
+
+
+  async saveStats(id_Stats: number, distance:number, time:number) {
+    //FETCH
+    const stats = {
+      userId: 1,
+      speed: (Math.random() * (10 - 0) + 0).toFixed(2 || 2),
+      distance: distance,
+      time: time,
+      date: new Date(),
+      startTime: "01:00:00",
+      endTime: "01:00:00",
+      weekNum: 15,
+      month: 4,
+      year: 2022
+    };
+    this.http.post<any>('http://localhost:5001/addStats', stats).subscribe(async (res) => {
+      if (res.status === 200) {
+        await this.presentToast('Se ha guardado correctamente', 'success');
+      }
+    },
+
+    async err => {
+        await this.presentToast('No se ha podido registrar', 'danger');
+        console.error('ha surgido un error', err);
+    });
+  }
+
+  inicioTodo(){
+    this.loadMap()
+    this.calculateRoute()
   }
 
   loadMap() {
@@ -44,7 +102,6 @@ destination = { lat: 4.676802158355713, lng: -74.04825592041016 };
   
     google.maps.event.addListenerOnce(this.map, 'idle', () => {
       mapEle.classList.add('show-map');
-      this.calculateRoute();
     });
   }
 
@@ -56,18 +113,39 @@ destination = { lat: 4.676802158355713, lng: -74.04825592041016 };
     });
   }
 
-  private calculateRoute(){
+  calculateRoute(){
     this.directionsService.route({
-      origin: this.origin,
-      destination: this.destination,
+      origin: this.rutasRandom()[0],//this.origin,
+      destination: this.rutasRandom()[1],//this.destination,
       travelMode: google.maps.TravelMode.WALKING,
     }, (response, status)  => {
       if (status === google.maps.DirectionsStatus.OK) {
         this.directionsDisplay.setDirections(response);
+
+        //Aqui calcula la distancia y el tiempo
+        var route = response.routes[0];
+        var totalDist = 0;
+        var totalTime = 0;
+        for (var i = 0; i < route.legs.length; i++) {
+          totalDist += route.legs[i].distance.value;
+          totalTime += route.legs[i].duration.value;      
+        }
+        totalDist = parseFloat((totalDist / 1000).toFixed(2));
+        totalTime = parseFloat((totalTime / 60).toFixed(2));
+        document.getElementById('distance').innerHTML = "Total Distance: " + totalDist + ' km';
+        document.getElementById('time').innerHTML = "Total Time: " + totalTime + " Min";   
+        //-------------------------------------------
+        this.saveStats(1,totalDist,totalTime);
+
+
       } else {
         alert('Could not display directions due to: ' + status);
       }
     });
   }
+
+
+
+
 
 }
