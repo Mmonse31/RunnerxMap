@@ -4,8 +4,10 @@ declare var google;
 
 interface Marker {
   position: {
-    lat: number,
-    lng: number,
+    lat: number;
+    lng: number;
+    image: string;
+  text: string;
   };
   title: string;
 }
@@ -40,7 +42,10 @@ export class FindPlacesPage implements OnInit {
       const marker = {
         position: {
           lat: 4.658383846282959,
-          lng: -74.09394073486328
+          lng: -74.09394073486328,
+          title: 'Parque De la Familia',
+      image: 'https://lh5.googleusercontent.com/p/AF1QipOCgzq_0DYB9AxD-ItTG01x2csLsSfWsawBCypc=w408-h306-k-no',
+      text: 'Animi voluptatem, aliquid impedit ratione placeat necessitatibus quisquam molestiae obcaecati laudantium?'
         },
         title: 'punto uno'
       };

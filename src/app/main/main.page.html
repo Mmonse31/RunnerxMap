@@ -1,12 +1,25 @@
 
 <ion-content>
 
-  <ion-chip>
-      <ion-avatar style=" float: right; ">
-        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+  <ion-chip [routerLink]="['/start']">
+    <ion-avatar>
+      <img src="../../assets/images/victory.png">
+    </ion-avatar>
+    <ion-label>Start</ion-label>
+</ion-chip>
+
+  <ion-chip [routerLink]="['/find-places']">
+      <ion-avatar>
+        <img src="../../assets/images/ubicacion.png">
       </ion-avatar>
-      <ion-label>Pepito don Berger</ion-label>
+      <ion-label>Find Places</ion-label>
   </ion-chip>
 
+  <ion-chip [routerLink]="['/profile']">
+    <ion-avatar>
+      <img src="../../assets/images/settings.png" >
+    </ion-avatar>
+    <ion-label>Profile</ion-label>
+</ion-chip>
 
 </ion-content>
